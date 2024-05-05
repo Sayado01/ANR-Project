@@ -3,3 +3,4 @@ C:UsersuserDesktop3APFEFranceStage filter=lfs diff=lfs merge=lfs -text
 bertModel-20240428T144909Z-001bertModelsaved_model/model.safetensors filter=lfs diff=lfs merge=lfs -text
 bertModel-20240428T144909Z-001/bertModel/saved_model/model.safetensors filter=lfs diff=lfs merge=lfs -text
 C:/Users/user/Desktop/3A/PFE/France/Stage[[:space:]]PFE/bertModel-20240428T144909Z-001/bertModel/saved_model/model.safetensors filter=lfs diff=lfs merge=lfs -text
+model.safetensors filter=lfs diff=lfs merge=lfs -text
