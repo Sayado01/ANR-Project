@@ -143,12 +143,18 @@ document.getElementById('sentenceForm').addEventListener('submit', function (eve
             var backgroundColor = JSON.parse(chartData).datasets[0].backgroundColor.slice(0, 5);
             var borderColor = JSON.parse(chartData).datasets[0].borderColor.slice(0, 5);
             var labels = JSON.parse(chartData).labels.slice(0, 5);
-            // Scroll to the bottom of the chat conversation
-            reloadDashboardScript(data, backgroundColor, borderColor, labels);
             addAutoResize();
             scrollDown();
             // Clear the textarea after submitting
             form.reset();
+            // Create a new canvas element for the new chart
+            var canvasId = generateUniqueId();
+            var canvasHTML = document.getElementById('bestSellers#');
+            canvasHTML.id = generateUniqueId();
+            canvasId = canvasHTML.id;
+
+            // Update the new chart with data
+            updateChart(canvasId);
         })
         .catch(error => console.error('Error:', error));
 });

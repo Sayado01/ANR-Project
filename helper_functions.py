@@ -4,15 +4,21 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from transformers import BatchEncoding, PreTrainedTokenizerBase
 from typing import Optional
 from torch import Tensor
+from github import Github
 
-# Charger le modèle
-model = BertForSequenceClassification.from_pretrained(r"bertModel-20240428T144909Z-001\bertModel\saved_model")
 
-# Charger le tokenizer
-tokenizer = BertTokenizer.from_pretrained(r"bertModel-20240428T144909Z-001\bertModel\saved_tokenizer")
+token = "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"
+# Load the model
+model_path = "Sayado/Model_PFE"
+print("SSSS")
+model = BertForSequenceClassification.from_pretrained(model_path, token=token)
+
+# Load the tokenizer
+tokenizer_path = "Sayado/Model_PFE"
+tokenizer = BertTokenizer.from_pretrained(tokenizer_path, token = token)
 
 # Charger le label encoder
-with open(r"bertModel-20240428T144909Z-001\bertModel\label_encoder.pkl", "rb") as f:
+with open("bertModel-20240428T144909Z-001\bertModel\label_encoder.pkl", "rb") as f:
     label_encoder = pickle.load(f)
 
 class_labels = {
@@ -27,8 +33,6 @@ class_labels = {
     2: ('Computational_Complexity', 'pink', '#d63384'),
     4: ('Computational_Geometry', 'orange', '#fd7e14')
 }
-
-
 
 def predict_class(text):
     # Tokenisation du texte
