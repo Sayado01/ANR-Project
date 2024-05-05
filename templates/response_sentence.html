@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="d-flex flex-column align-items-start">
+        <div class="text-secondary p-2 px-3 rounded-2">
+            <div class="card" style="background-color: #303131; border: 2px dashed rgb(82, 82, 82);">
+                <div class="card-body">
+                    <h4 class="card-title text-white">Text's Category</h4>
+                    <div class="row d-flex">
+                        <div class="col-sm-6 col-6">
+                            <ul class="graphl-legend-rectangle">
+                                <!-- Populate categories dynamically -->
+                                <!-- class_label has two elements : the class and the color (for display)-->
+                                {% for class_label, probability in class_probabilities.items() %}
+                                {% if loop.index <= 5 %} <li class="text-white-50">
+                                    <span class="bg-{{ class_label[1] }}"></span>
+                                    <div class="d-flex justify-content-center">
+                                        {{ class_label[0] }}:
+                                        <span class="text-white w-100">&nbsp;{{ "%.2f" % probability }}%</span>
+                                    </div>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+    
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 grid-margin col-6">
+                            <canvas class="bestSellers" data-chart = '{{ chart_data | tojson | safe }}' id="bestSellers#"></canvas>
+                        </div>
+                    </div>
+                    <div class="mb-lg-0 text-white-50">
+                        la classe la plus dominante est <span class="fw-bolder text-white">{{ predicted_class[0] }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var chartData = {{ chart_data | tojson | safe}};
+    </script>
+    <script src="../static/js/dashboard_sentence.js"></script>    
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>OCR</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5262/5262072.png">
+    <link rel="stylesheet" href="../static/css/style1.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body >
+    <main>
+        <!-- Container START -->
+        <div class="container d-inline align-items-center">
+            <div class="text-center"> <h1>PDF Classifier</h1>
+                <p class="mb-3 mt-n1">Please Upload your pdf and click submit, and wait for the results</p>
+            </div>
+            
+            <div class="row m-2 justify-content-center">
+                <!-- Main content START -->
+                <div class="col-lg-6 ">
+                        
+                        <!-- Blog item START -->
+                        <form action="/upload" id="upload-form" method="POST" enctype="multipart/form-data">
+
+                            <div class="drag-image h-500px">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <h6>Drag and Drop File Here</h6>
+                                <span>OR</span>
+                                <button>Browse File</button>
+                                <input id="file-input" type="file" name="image" accept=".pdf" hidden>
+                            </div>
+                            <div class="submit-btn mt-n1">
+                                <button class="btn btn-danger-soft me-2" id="reset" type="button" onclick="deleteCurrentFile()"> <i class="bi bi-pencil-fill pe-1"></i> Clear </button>
+                                <button type="submit">Submit</button>
+                            </div>
+                            
+                        </form>
+                </div>
+
+                <!-- Right sidebar START -->
+                <div class="col-lg-4">
+                    <div class="row g-4">
+                        <!-- Card News START -->
+                        <div class="col-sm-6 col-lg-12">
+                            <div class="result">
+                                <textarea id="ocr-result" readonly>{{extracted_text}}</textarea>
+                                <button id="copy-btn">Copy</button>
+                            </div>
+                            <div class="">
+                                <textarea id="category-result" readonly>{{predicted_class}}</textarea>
+                            </div>
+                        </div>
+                        <!-- Card News END -->
+
+                    </div>
+                    <!-- Right sidebar END -->
+                </div> <!-- Row END -->
+            </div>
+        </div>
+        <!-- Container END -->
+
+    </main>
+    <script src="../static/js/home.js" type="text/javascript"></script>
+    <script>
+        function clearFile() {
+            const fileInput = document.getElementById('file-input');
+            const newFileInput = fileInput.cloneNode(true);
+            fileInput.parentNode.replaceChild(newFileInput, fileInput);
+        }
+    </script>
+</body>
+
+</html>
