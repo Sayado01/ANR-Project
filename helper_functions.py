@@ -6,13 +6,13 @@ from typing import Optional
 from torch import Tensor
 
 # Charger le modèle
-model = BertForSequenceClassification.from_pretrained(r"C:\Users\user\Desktop\3A\PFE\France\Stage PFE\bertModel-20240428T144909Z-001\bertModel\saved_model")
+model = BertForSequenceClassification.from_pretrained(r"bertModel-20240428T144909Z-001\bertModel\saved_model")
 
 # Charger le tokenizer
-tokenizer = BertTokenizer.from_pretrained(r"C:\Users\user\Desktop\3A\PFE\France\Stage PFE\bertModel-20240428T144909Z-001\bertModel\saved_tokenizer")
+tokenizer = BertTokenizer.from_pretrained(r"bertModel-20240428T144909Z-001\bertModel\saved_tokenizer")
 
 # Charger le label encoder
-with open(r"C:\Users\user\Desktop\3A\PFE\France\Stage PFE\bertModel-20240428T144909Z-001\bertModel\label_encoder.pkl", "rb") as f:
+with open(r"bertModel-20240428T144909Z-001\bertModel\label_encoder.pkl", "rb") as f:
     label_encoder = pickle.load(f)
 
 class_labels = {
