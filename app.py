@@ -118,6 +118,16 @@ def treatment():
         }
         print(predict_class)
         print(chart_data)
+         # clear the uploads folder
+        for filename in os.listdir(app.config['UPLOAD_FOLDER']):
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
         return render_template('pdf.html',extracted_text = extracted_text, class_probabilities=class_probabilities, predicted_class=predicted_class, chart_data = chart_data)
     return render_template('pdf.html')
 
@@ -137,6 +147,16 @@ def sentence():
             'labels': [label[0] for label in class_probabilities.keys()]
         }
         print(chart_data)
+         # clear the uploads folder
+        for filename in os.listdir(app.config['UPLOAD_FOLDER']):
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
         return render_template('response_sentence.html', text=text, class_probabilities=class_probabilities, predicted_class=predicted_class,chart_data = chart_data)
 
     # Render the initial form page
