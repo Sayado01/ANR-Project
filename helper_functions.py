@@ -4,7 +4,6 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from transformers import BatchEncoding, PreTrainedTokenizerBase
 from typing import Optional
 from torch import Tensor
-from github import Github
 
 
 token = "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"
@@ -18,7 +17,7 @@ tokenizer_path = "Sayado/Model_PFE"
 tokenizer = BertTokenizer.from_pretrained(tokenizer_path, token = token)
 
 # Charger le label encoder
-with open("bertModel-20240428T144909Z-001\bertModel\label_encoder.pkl", "rb") as f:
+with open("label_encoder.pkl", "rb") as f:
     label_encoder = pickle.load(f)
 
 class_labels = {
