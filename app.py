@@ -1,5 +1,6 @@
 from flask import Flask, render_template,request, redirect,url_for, jsonify
 from PyPDF2 import PdfReader
+from helper_functions import predict_class
 import fitz  # PyMuPDF
 import os, shutil
 import torch
