@@ -9,7 +9,6 @@ from torch import Tensor
 token = "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"
 # Load the model
 model_path = "Sayado/Model_PFE"
-print("SSSS")
 model = BertForSequenceClassification.from_pretrained(model_path, token=token)
 
 # Load the tokenizer
