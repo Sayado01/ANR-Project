@@ -13,7 +13,10 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    predict_class = ""
+    class_probabilities = dict()
+    chart_data = dict()
+    return render_template('pdf.html', class_probabilities= class_probabilities, predicted_class=predict_class,chart_data = chart_data)
 
 @app.route("/upload", methods=['POST'])
 def process_pdf():
