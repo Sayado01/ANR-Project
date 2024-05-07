@@ -5,15 +5,13 @@ from transformers import BatchEncoding, PreTrainedTokenizerBase
 from typing import Optional
 from torch import Tensor
 
-
-token = "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"
 # Load the model
 model_path = "Sayado/Model_PFE"
-model = BertForSequenceClassification.from_pretrained(model_path, token=token)
+model = BertForSequenceClassification.from_pretrained(model_path)
 
 # Load the tokenizer
 tokenizer_path = "Sayado/Model_PFE"
-tokenizer = BertTokenizer.from_pretrained(tokenizer_path, token = token)
+tokenizer = BertTokenizer.from_pretrained(tokenizer_path)
 
 # Charger le label encoder
 with open("label_encoder.pkl", "rb") as f:
