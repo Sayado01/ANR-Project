@@ -1,20 +1,18 @@
 import torch
 import pickle
-from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import  AutoTokenizer , DistilBertForSequenceClassification
 from transformers import BatchEncoding, PreTrainedTokenizerBase
 from typing import Optional
 from torch import Tensor
 
 # Load the model
-model_path = "Sayado/Model_PFE"
-model = BertForSequenceClassification.from_pretrained(model_path)
+model = DistilBertForSequenceClassification.from_pretrained("distilBert/DistilBert/saved_model")
 
 # Load the tokenizer
-tokenizer_path = "Sayado/Model_PFE"
-tokenizer = BertTokenizer.from_pretrained(tokenizer_path)
+tokenizer = AutoTokenizer.from_pretrained("distilBert/DistilBert/saved_tokenizer")
 
 # Charger le label encoder
-with open("label_encoder.pkl", "rb") as f:
+with open("distilBert/DistilBert/label_encoder.pkl", "rb") as f:
     label_encoder = pickle.load(f)
 
 class_labels = {
